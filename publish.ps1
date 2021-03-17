@@ -24,7 +24,7 @@ $projects.Add(1, $ProjectName)
 $projects.Add(2, $ProjectName + '.UI')
 # $projects.Add(3,'Routindo.' +  $ProjectName + '.Components')
 
-$output = $SourceFolder + $separator + $projects[1] + $separator + "bin" + $separator + $configuration + $separator + "Publish" + $separator + $runtime;
+$output = $DeploymentPath + $separator + $ProjectName; # $SourceFolder + $separator + $projects[1] + $separator + "bin" + $separator + $configuration + $separator + "Publish" + $separator + $runtime;
 
 if($Clean -eq "true") {
     # Restore dependencies 
@@ -67,9 +67,9 @@ if($Publish -eq "true") {
 
 if($Pack -eq "true") {
     Write-Host "Packing a new version" 
-    $contractLibrary = Resolve-Path $([IO.Path]::Combine($output, "Routindo.Contract.dll"))
+    $contractLibrary = Resolve-Path $([IO.Path]::Combine($output, $AppName + "." + $ProjectName + ".dll"))
     $contractVersion = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($contractLibrary).ProductVersion
     Write-Host "Target version:" + $contractVersion
-    $packFileName = "Routindo.API" + $ProjectName + "-" + $contractVersion + ".zip"
+    $packFileName = $AppName + "." + $ProjectName + "-" + $contractVersion + ".zip"
     Compress-Archive -Update -Path $([IO.Path]::Combine($output, "*.*")) -DestinationPath $([IO.Path]::Combine($DeploymentPath, $packFileName))
 }
