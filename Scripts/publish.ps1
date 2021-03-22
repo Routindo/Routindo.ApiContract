@@ -2,12 +2,15 @@
 Param(
 	$AppName = "Routindo",
     $ProjectName = "Contract",
+    $UpdateLibs = "true",
     $Clean = "true",
     $Restore = "true",
     $Build = "true",
     $Publish = "true",
 	$Pack = "true",
-	$DeploymentPath = "..\_DEPLOYMENT"
+	$DeploymentPath = "..\..\_DEPLOYMENT",
+    $Share = "true",
+	$SharePath = "..\Libs\Shared"
 );
 
 $clean_publish = 1;
@@ -45,6 +48,10 @@ if($Restore -eq "true") {
 }
 
 if($Build -eq "true") {
+    # No reference to update from shared libs
+}
+
+if($Build -eq "true") {
     # Build projects 
     $projects.GETENUMERATOR() |  Sort-Object KEY  | % { 
         "Building " + $_.KEY.ToString() + " - " + $_.VALUE
@@ -72,4 +79,14 @@ if($Pack -eq "true") {
     Write-Host "Target version:" + $contractVersion
     $packFileName = $AppName + "." + $ProjectName + "-" + $contractVersion + ".zip"
     Compress-Archive -Update -Path $([IO.Path]::Combine($output, "*.*")) -DestinationPath $([IO.Path]::Combine($DeploymentPath, $packFileName))
+}
+
+
+if($Share -eq "true") {
+    Write-Host "Sharing to Libs" 
+	$ProjectSharePath = Join-Path -Path $SharePath -ChildPath $ProjectName
+    Write-Host "Folder Share Path: " + $ProjectSharePath 
+	New-Item -ItemType Directory -Force -Path $ProjectSharePath
+	Get-ChildItem -Path $ProjectSharePath -Include *.* -Recurse | foreach { $_.Delete()}
+    Get-ChildItem -Path $output  | Copy-Item -Destination $ProjectSharePath -Recurse 
 }

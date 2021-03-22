@@ -1,10 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Routindo.Infrastructure, PublicKey=002400000480000094000000060200000024000052534131000400000100010011a684ee7cce4d" +
-    "66dbf038be95adfbcf4ba45af76a25845c824584773c7fa57b053543f300d4b568e24fe35a822b"+
-"b53e58c2bc84393fd61c573bb10f9db7d3030990953b64c06dcdae01d82f327c54987a6871ad57"+
-"5b315d714f23c11dab781bb36d182b9cb05888d01678bbb1165546fd3f9fde00edb56fef566831"+
-"78d1fdaf")]
+[assembly: InternalsVisibleTo("Routindo.Framework.Infrastructure, PublicKey=" +
+                                "002400000480000094000000060200000024000052534131000400000100010011a684ee7cce4d" +
+                                "66dbf038be95adfbcf4ba45af76a25845c824584773c7fa57b053543f300d4b568e24fe35a822b"+
+                                "b53e58c2bc84393fd61c573bb10f9db7d3030990953b64c06dcdae01d82f327c54987a6871ad57"+
+                                "5b315d714f23c11dab781bb36d182b9cb05888d01678bbb1165546fd3f9fde00edb56fef566831"+
+                                "78d1fdaf")]
 
 [assembly: InternalsVisibleTo("Routindo.Framework, PublicKey=" +
                               "0024000004800000940000000602000000240000525341310004000001000100cd4d3b9bedf0a1" +
