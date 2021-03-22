@@ -8,15 +8,15 @@ Param(
     $Build = "true",
     $Publish = "true",
 	$Pack = "true",
-	$DeploymentPath = "..\..\_DEPLOYMENT",
+	$DeploymentPath = "..\..\..\_DEPLOYMENT",
     $Share = "true",
-	$SharePath = "..\Libs\Shared"
+	$SharePath = "..\..\Libs\Shared"
 );
 
 $clean_publish = 1;
 
 $separator = "\";
-$SourceFolder = "." + $separator + "Source";
+$SourceFolder = "..\" + $separator + "Source";
 $configuration = "Release";
 $runtime = "win-x64";
 
