@@ -3,14 +3,9 @@
 		<Company>Younes CHEIKH</Company>
 		<Authors>Younes CHEIKH</Authors>
 		<Product>Routindo 21 - Contract</Product>
-		<Copyright>Copyright © 2021 - All rights reserved</Copyright>
-		<VersionPrefix>1.2.1</VersionPrefix>
-		<!--<VersionSuffix>alpha</VersionSuffix>-->
+		<Copyright>Copyright © 21 - All rights reserved</Copyright>
+		<VersionPrefix>21.0.1</VersionPrefix>
+		<VersionSuffix>preview1</VersionSuffix>
 		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
-	<!--<Target Name="Version">
-		<PropertyGroup>
-			<VersionSuffix>$([System.DateTime]::Now.ToString(yyyy-MM-dd-HHmm))-$(Configuration)</VersionSuffix>
-		</PropertyGroup>
-	</Target>-->
 </Project>
