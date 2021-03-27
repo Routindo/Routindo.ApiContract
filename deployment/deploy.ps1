@@ -130,9 +130,9 @@ function Publish-Project($ProjectPath, $Directory, $SelfContained, $Clean) {
 }
 
 function Share-Library($PublishOutput, $Directory) {
-    $SharedLibsFolder = Get-SharedLibs-Folder -Directory $Directory
-    Get-ChildItem -Path $SharedLibsFolder -Include *.* -Recurse | foreach { $_.Delete()}
-    Get-ChildItem -Path $PublishOutput  | Copy-Item -Destination $SharedLibsFolder -Recurse 
+    $SharedLibsDestinationFolder = Get-SharedLibs-Folder -Directory $Directory
+    Get-ChildItem -Path $SharedLibsDestinationFolder -Include *.* -Recurse | foreach { $_.Delete() }
+    Get-ChildItem -Path $PublishOutput  | Copy-Item -Destination $SharedLibsDestinationFolder -Recurse -Force
 }
 
 function Pack($PublishOutput, $Name) {
@@ -178,7 +178,7 @@ $xmlConfig.Deployment.Projects.Project | Sort-Object Order | ForEach-Object {
         Write-Host "Publishing Project:" $_.Name
 
         $DeploymentDir = $_.DeploymentDir
-        if($DeploymentDir -eq "") {
+        if([string]::IsNullOrEmpty($DeploymentDir)) {
             $DeploymentDir = $_.Directory
         }
 
