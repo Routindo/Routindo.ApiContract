@@ -8,7 +8,7 @@ Param(
     $Build = "true",
     $Publish = "true",
 	$Pack = "true",
-	$DeploymentPath = "..\..\..\_DEPLOYMENT",
+	$DeploymentPath = "..\..\_DEPLOYMENT",
     $Share = "true",
 	$SharePath = "..\..\Libs\Shared"
 );

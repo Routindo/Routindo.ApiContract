@@ -1,0 +1,17 @@
+<Deployment>
+	<Settings>
+		<Setting Key="SourcePath" Value="../Source/" />
+		<Setting Key="DependenciesPath" Value="../Libs/Shared" />
+		<Setting Key="PublishFolder" Value="../../Deployment/" />
+		<Setting Key="SharedLibsFolder" Value="../../Libs/Shared/" />
+		<Setting Key="PackFolder" Value="../../Deployment/" />
+	</Settings>
+	<Projects>
+		<Project Order="1" Name="Routindo.Contract.UI" Share="True" Pack="False" SelfContained="False"
+		Directory="Contract.UI" File="Routindo.Contract.UI.csproj" DeploymentDir="Contract" CleanDeploymentDir="True" />
+		<Project Order="2" Name="Routindo.Contract" Share="True" Pack="False" SelfContained="False"
+		Directory="Contract" File="Routindo.Contract.csproj" DeploymentDir="Contract"  CleanDeploymentDir="False" />
+	</Projects>
+	<Dependencies>
+	</Dependencies>
+</Deployment>
