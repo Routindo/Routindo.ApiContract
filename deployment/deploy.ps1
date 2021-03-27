@@ -96,9 +96,10 @@ function Restore-Project-Dependencies($ProjectPath) {
 }
 
 function Update-SharedLibs() {
-    $SharedLibsSourceFolder = Get-Setting -SettingKey 'SharedLibsFolder'
+    $SharedLibsSourceFolder = Force-Resolve-Path (Join-Path $DeploymentPath (Get-Setting -SettingKey 'SharedLibsFolder'))
     $DependenciesDestinationFolder = Force-Resolve-Path (Join-Path $DeploymentPath (Get-Setting -SettingKey 'DependenciesPath'))
-
+	Write-Host "DependenciesDestinationFolder" $DependenciesDestinationFolder
+	Write-Host "SharedLibsSourceFolder" $SharedLibsSourceFolder
     $xmlConfig.Deployment.Dependencies.Dependency | Sort-Object Order | ForEach-Object { 
         $DependencyDirectory = Force-Resolve-Path (Join-Path $SharedLibsSourceFolder $_.Directory)
 
