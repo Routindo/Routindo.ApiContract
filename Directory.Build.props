@@ -5,7 +5,6 @@
 		<Product>Routindo 21 - Contract</Product>
 		<Copyright>Copyright © 21 - All rights reserved</Copyright>
 		<VersionPrefix>21.0.1</VersionPrefix>
-		<VersionSuffix>preview1</VersionSuffix>
 		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
 </Project>

@@ -9,7 +9,7 @@
 	<Projects>
 		<Project Order="1" Name="Routindo.Contract.UI" Share="True" Pack="False" SelfContained="False"
 		Directory="Contract.UI" File="Routindo.Contract.UI.csproj" DeploymentDir="Contract" CleanDeploymentDir="True" />
-		<Project Order="2" Name="Routindo.Contract" Share="True" Pack="False" SelfContained="False"
+		<Project Order="2" Name="Routindo.Contract" Share="True" Pack="True" SelfContained="False"
 		Directory="Contract" File="Routindo.Contract.csproj" DeploymentDir="Contract"  CleanDeploymentDir="False" />
 	</Projects>
 	<Dependencies>
