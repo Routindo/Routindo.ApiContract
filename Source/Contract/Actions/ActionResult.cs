@@ -54,7 +54,7 @@ namespace Routindo.Contract.Actions
         {
             Result = result;
             AttachedException = exception;
-            AdditionalInformation = additionalInformation;
+            AdditionalInformation = additionalInformation?? new ArgumentCollection();
         }
 
         /// <summary>
