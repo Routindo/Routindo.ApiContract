@@ -4,12 +4,12 @@ namespace Routindo.Contract.Plugin
 {
     public abstract class RoutindoComponentInfo
     {
-        protected RoutindoComponentInfo(string id, Type watcherType, string name, string description)
+        protected RoutindoComponentInfo(string id, Type type, string name, string description)
         {
             Id = id;
             Name = name;
             Description = description;
-            WatcherType = watcherType;
+            ComponentType = type;
         }
 
         public string Id { get; }
@@ -18,6 +18,6 @@ namespace Routindo.Contract.Plugin
 
         public string Description { get; }
 
-        public Type WatcherType { get; }
+        public Type ComponentType { get; }
     }
 }
