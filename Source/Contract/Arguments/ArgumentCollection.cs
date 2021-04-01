@@ -80,17 +80,26 @@ namespace Routindo.Contract.Arguments
             return $"[{string.Join(";", this.Select(e => $"({e.Value})").ToArray())}]";
         }
 
+        /// <summary>
+        /// Gets the value.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">The key.</param>
+        /// <returns>
+        /// The casted type
+        /// </returns>
+        /// <exception cref="FormatException">If the Type of 'T' is not expected</exception>
         public T GetValue<T>(string key)
         {
             if (!this.HasArgument(key))
                 return default;
 
             var value = this[key];
-             
+
             Type targetType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
             var convertedArgument = Convert.ChangeType(value, targetType);
 
-            return (T)convertedArgument;
+            return (T) convertedArgument;
         }
     }
 }
