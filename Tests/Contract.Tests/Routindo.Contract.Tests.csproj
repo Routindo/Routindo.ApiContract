@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UI\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Source\Contract.UI\Routindo.Contract.UI.csproj" />
     <ProjectReference Include="..\..\Source\Contract\Routindo.Contract.csproj" />
   </ItemGroup>

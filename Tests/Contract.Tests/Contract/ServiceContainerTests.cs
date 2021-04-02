@@ -13,6 +13,12 @@ namespace Routindo.Contract.Tests.Contract
     [TestClass]
     public class ServiceContainerTests
     {
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            ServicesContainer.SetServicesProvider(null);
+        }
+
         [TestMethod]
         public void GetSampleInstanceOfServiceContainerTest()
         {
