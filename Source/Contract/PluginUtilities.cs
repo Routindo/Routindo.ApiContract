@@ -33,7 +33,7 @@ namespace Routindo.Contract
 
         private string GenerateUniqueId()
         {
-            return Guid.NewGuid().ToString("N");
+            return Guid.NewGuid().ToString("D");
         }
     }
 }
