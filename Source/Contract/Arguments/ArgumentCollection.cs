@@ -67,7 +67,7 @@ namespace Routindo.Contract.Arguments
 
         public bool HasArgument(string name)
         {
-            return this.Any(e => e.Key == name) && this.SingleOrDefault(e => e.Key == name)?.Value != null;
+            return this.Any(e => e.Key == name); //&& this.SingleOrDefault(e => e.Key == name)?.Value != null;
         }
 
         public string ContentString()
@@ -95,6 +95,9 @@ namespace Routindo.Contract.Arguments
                 return default;
 
             var value = this[key];
+
+            if (value == null)
+                return default;
 
             Type targetType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
             var convertedArgument = Convert.ChangeType(value, targetType);
