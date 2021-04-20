@@ -10,6 +10,11 @@ namespace Routindo.Contract.Actions
             return new ActionResult(false);
         }
 
+        public static ActionResult Failed(Exception exception)
+        {
+            return new ActionResult(false).WithException(exception);
+        }
+
         public static ActionResult Succeeded()
         {
             return new ActionResult(true);
