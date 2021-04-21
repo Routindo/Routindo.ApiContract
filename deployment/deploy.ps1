@@ -9,7 +9,8 @@ Param(
     $SharedLibsFolder = "",
     $PackFolder = "",
     $Configuration = "Release",
-    $Runtime = "win-x64"
+    $Runtime = "win-x64",
+    $PreRelease = ""
 );
 
 $DeploymentPath = Split-Path $MyInvocation.MyCommand.Path -Parent
@@ -117,8 +118,19 @@ function Build-Project($ProjectPath) {
     dotnet build $ProjectPath --configuration $Configuration --runtime $Runtime
 }
 
+function Get-Version-Suffix($ProjectPath) {
+    $commitHash = (git -C (Split-Path $ProjectPath -Parent) rev-parse HEAD).Substring(0,9);
+    if([string]::IsNullOrEmpty($PreRelease)) {
+        return $commitHash
+    } 
+    else {
+        return "$($commitHash)+$($PreRelease)"
+    }
+}
+
 function Execute-Publish-Command ($ProjectPath, $PublishOutput, $SelfContained) {
-    dotnet publish $ProjectPath --configuration $Configuration --runtime $Runtime "/p:DebugType=None /p:DebugSymbols=false /p:CopyLocalLockFileAssemblies=true" --self-contained $SelfContained --output $PublishOutput | Out-Default
+    $VersionSuffix = Get-Version-Suffix -ProjectPath $ProjectPath
+    dotnet publish $ProjectPath --configuration $Configuration --runtime $Runtime /p:DebugType=None /p:DebugSymbols=false /p:CopyLocalLockFileAssemblies=true --version-suffix $VersionSuffix --self-contained $SelfContained --output $PublishOutput | Out-Default
 }
 function Publish-Project($ProjectPath, $Directory, $SelfContained, $Clean) {
     $PublishOutput = ""
@@ -177,12 +189,12 @@ $xmlConfig.Deployment.Projects.Project | Sort-Object Order | ForEach-Object {
 
     if($Publish -eq 'true') {
         Write-Host "Publishing Project:" $_.Name
-
         $DeploymentDir = $_.DeploymentDir
         if([string]::IsNullOrEmpty($DeploymentDir)) {
             $DeploymentDir = $_.Directory
         }
-
+        $commitHash = (git -C (Split-Path $ProjectAbsolutPath -Parent) rev-parse HEAD).Substring(0,9);
+        Write-Host "Suffix: " $commitHash
         $PublishOutputFolder = Publish-Project -ProjectPath $ProjectAbsolutPath -Directory $DeploymentDir -SelfContained $_.SelfContained -Clean $_.CleanDeploymentDir
 
         if($_.Share -eq 'true') {
