@@ -100,6 +100,18 @@ namespace Routindo.Contract.Arguments
                 return default;
 
             Type targetType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
+
+            if (targetType.IsEnum)
+            {
+                var enumStrValue = value.ToString();
+                if (string.IsNullOrWhiteSpace(enumStrValue))
+                    return default;
+
+                T enumValue = (T)Enum.Parse(targetType, enumStrValue);
+                if (!Enum.IsDefined(targetType, enumValue)) return default(T);
+                return enumValue;
+            }
+
             var convertedArgument = Convert.ChangeType(value, targetType);
 
             return (T) convertedArgument;
