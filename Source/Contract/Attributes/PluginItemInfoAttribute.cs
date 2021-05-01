@@ -12,7 +12,7 @@ namespace Routindo.Contract.Attributes
 
         public string Description { get; }
 
-        public string Category { get; set; } = "Uncategorized";
+        public string Category { get; set; } = Constants.DefaultCategoryName;
 
         public string FriendlyName
         {
