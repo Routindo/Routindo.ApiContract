@@ -28,7 +28,7 @@ namespace Routindo.Contract.Arguments
         public object this[string name]
         {
             get => this.Single(e => e.Key == name).Value;
-            private set
+            set
             {
                 if (this.All(e => e.Key != name))
                     Add(new Argument(name, value));

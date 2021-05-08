@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Routindo.Contract.Exceptions
 {
@@ -13,7 +14,10 @@ namespace Routindo.Contract.Exceptions
 
         public override string ToString()
         {
-            return $"Missing argument : {Key}" + base.ToString();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"Missing argument : {Key}");
+            stringBuilder.Append(base.ToString());
+            return stringBuilder.ToString();
         }
     }
 }
