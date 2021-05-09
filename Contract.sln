@@ -17,7 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{838ECD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{30E44FDE-AB3E-4537-A3BB-960070E84EBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Routindo.Contract.Tests", "Tests\Contract.Tests\Routindo.Contract.Tests.csproj", "{4D43348D-7DEA-4220-A0DD-2D9341FF3612}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Routindo.Contract.Tests", "Tests\Contract.Tests\Routindo.Contract.Tests.csproj", "{4D43348D-7DEA-4220-A0DD-2D9341FF3612}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", "{81F3945B-0FCF-40D6-B073-4E31D8BD6F11}"
+	ProjectSection(SolutionItems) = preProject
+		deployment\config.xml = deployment\config.xml
+		deployment\deploy.ps1 = deployment\deploy.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +65,7 @@ Global
 		{1F4C5128-DB4D-4C74-9BF0-4BB4027DAE56} = {838ECD4B-F4F1-4CB0-BCC3-B4E2B90B4B2C}
 		{847141A6-F49A-4284-84A7-3B517E93A9DA} = {838ECD4B-F4F1-4CB0-BCC3-B4E2B90B4B2C}
 		{4D43348D-7DEA-4220-A0DD-2D9341FF3612} = {30E44FDE-AB3E-4537-A3BB-960070E84EBB}
+		{81F3945B-0FCF-40D6-B073-4E31D8BD6F11} = {A12366DD-A184-4505-B6CD-4834EB58683F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17BE02BA-E932-40CA-B929-C0DE6BCC6012}
